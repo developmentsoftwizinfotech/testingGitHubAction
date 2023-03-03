@@ -3,6 +3,10 @@ on:
   push:
   - master
 jobs:
+
+ release:
+    runs-on: ubuntu-latest
+
  deploy:
     runs-on: ubuntu-latest
     steps:
