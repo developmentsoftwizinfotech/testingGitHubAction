@@ -10,25 +10,27 @@ on:
 
 
 jobs:
-  build:
+ deploy:
     runs-on: ubuntu-latest
-
-
-
     steps:
-   - name: Checkout
+    - name: Checkout
       uses: actions/checkout@v3
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 8.5.5
 
     - name: Install dependencies
       run: npm install
 
+    - name: Run tests
+      run: npm run test:headless
+
     - name: Build
       run: npm run build:prod
+
+
   - name: Build & push Docker image
      uses: mr-smithers-excellent/docker-build-push@v5
     with:
@@ -92,5 +94,6 @@ jobs:
 #       with:
 #         github_token: ${{ secrets.GITHUB_TOKEN }}
 #         publish_dir: dist/angular-github-actions
+
 
 
