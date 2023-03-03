@@ -1,14 +1,7 @@
-
-
 name: Project cicd flow
 on:
-
   push:
-    branches: [ master ]
-    pull_request:
-    branches: [ master ]
-
-
+  - master
 jobs:
  deploy:
     runs-on: ubuntu-latest
