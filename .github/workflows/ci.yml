@@ -3,9 +3,8 @@ on:
   push:
   - "master"
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
- 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
