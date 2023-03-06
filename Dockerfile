@@ -49,12 +49,24 @@
 #     COPY nginx.conf /etc/nginx/nginx.conf
 #     COPY --from=build /usr/src/app/dist/*
 
-# Stage 1
-FROM node:14.15.4 as node
+# # Stage 1
+# FROM node:14.15.4 as node
+# WORKDIR /app
+# COPY . .
+# RUN npm install
+# RUN npm run build --prod
+# # Stage 2
+# FROM nginx:1.15.8-alpine
+# COPY --from=node /app/dist/angular-app /usr/share/nginx/html
+
+
+
+#stage 1
+FROM node:14.0.0-alpine AS builder
 WORKDIR /app
 COPY . .
 RUN npm install
 RUN npm run build --prod
-# Stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/angular-app /usr/share/nginx/html
+#stage 2
+FROM nginx:1.15.8-alpine
+COPY --from=builder /app/dist/app /usr/share/nginx/html
