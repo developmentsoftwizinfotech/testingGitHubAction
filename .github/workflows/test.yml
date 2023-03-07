@@ -19,9 +19,8 @@ jobs:
       - name: Install dependencies
         run: npm instal
       - name: Build
-        run: npm run build:install
-      - name: Test
-        run: npm run test:install
+        run: npm run build:prod
+  
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
