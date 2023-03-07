@@ -17,11 +17,11 @@ jobs:
         with:
           node-version: '12.x'
       - name: Install dependencies
-        run: npm ci
+        run: npm instal
       - name: Build
-        run: npm run build:ci
+        run: npm run build:install
       - name: Test
-        run: npm run test:ci
+        run: npm run test:install
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
