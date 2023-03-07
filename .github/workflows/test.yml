@@ -15,12 +15,12 @@ jobs:
       - name: Use Node 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '16.x'
       - name: Install dependencies
         run: npm install
       - name: Build
         run: npm run build --prod
-     
+
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
