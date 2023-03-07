@@ -16,6 +16,6 @@ jobs:
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        server: ftp://103.21.58.98
+        server: ftp.new.istcosa.com/Admin/
         username: istcosa
         password: x4Mt&5u1
