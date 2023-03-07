@@ -39,10 +39,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Download build
-        uses: actions/download-artifact@v1
-        with:
-          name: deploy_dist
+      # - name: Download build
+      #   uses: actions/download-artifact@v1
+      #   with:
+      #     name: deploy_dist
       - name: Deploy to GitHub Pages
         uses: developmentsoftwizinfotech/testingGitHubAction@master
         with:
