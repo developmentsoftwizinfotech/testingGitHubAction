@@ -18,8 +18,8 @@ jobs:
           node-version: '16.x'
       - name: Install dependencies
         run: npm install
-      - name: Build
-        run: npm run build --prod
+      # - name: Build
+      #   run: npm run build --prod
 
       # - name: Archive build
       #   if: success()
@@ -48,4 +48,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: master
-          FOLDER: deploy_dist/angular-demo
+          # FOLDER: deploy_dist/angular-demo
