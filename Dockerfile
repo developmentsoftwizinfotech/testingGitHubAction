@@ -1,13 +1,20 @@
-#stage 1
-# FROM node:latest as node
+FROM node:latest as node
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build --prod
+FROM nginx:alpine
+COPY --from=node /app/dist/testing-docker /usr/share/nginx/html
+
+# #stage 1
+# FROM node:14.0.0-alpine AS builder
 # WORKDIR /app
 # COPY . .
 # RUN npm install
 # RUN npm run build --prod
 # #stage 2
-# FROM nginx:alpine
-# COPY --from=node /app/dist/testing-docker /usr/share/nginx/html
-
+# FROM nginx:1.15.8-alpine
+# COPY --from=builder /app/dist/app /usr/share/nginx/html
 
 
 # #stage 1
@@ -61,12 +68,3 @@
 
 
 
-#stage 1
-FROM node:14.0.0-alpine AS builder
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build --prod
-#stage 2
-FROM nginx:1.15.8-alpine
-COPY --from=builder /app/dist/app /usr/share/nginx/html
