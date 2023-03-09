@@ -11,16 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       - name: Use Node 12.x
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
       - name: Install dependencies
         run: npm install
-      # - name: Build
-      #   run: npm run build --prod
-
+      - name: Build
+        run: npm run build --prod
+      - name: Checkout
+        uses: actions/checkout@v1
       # - name: Archive build
       #   if: success()
       #   uses: actions/upload-artifact@v1
